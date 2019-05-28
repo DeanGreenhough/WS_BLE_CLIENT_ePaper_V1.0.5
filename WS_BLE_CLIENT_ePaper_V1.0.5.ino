@@ -8,7 +8,7 @@
    1.0.1  Added WDT in callback function as freezing - set to 10secs
    1.0.2  Altered delays in callback, delay end of loop needs to be 3secs
    1.0.3  INIT_BLE ADDED & MOVED #include "BLEDevice.h" TO TOP AS FAILED TO COMPILE IN VS2019
-   1.0.4  ATTEMPTED TO ADD WIFI, core 1 CRASHES - ISSUES AROUBD USE IOF A SINGLE ARIEL MAYBE!!
+   1.0.4  ATTEMPTED TO ADD WIFI, core 1 CRASHES - ISSUES AROUND USE IOF A SINGLE AERIAL MAYBE!!
    1.0.5  WiFi EVENT HANDLER ADDED TO SOLVE BT/WIFI ISSUES USING enum 
 		  note: BTON does not appear to invoke BT, enum is in correct state
 		  the work around is to esp.restart() after sending WiFi to re initilaise BT
