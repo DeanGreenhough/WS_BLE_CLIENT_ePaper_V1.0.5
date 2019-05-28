@@ -26,8 +26,9 @@
 #include <PubSubClient.h>
 #include <WiFi.h>
 #include <WiFiClient.h>
-#define STA_SSID "*********"
-#define STA_PASS "*********"
+#include "credentials.h"						// Credentials
+//#define STA_SSID "*********"
+//#define STA_PASS "*********"
 #define AP_SSID  "esp32"
 //WIFI & MQTT
 WiFiClient espClient;
