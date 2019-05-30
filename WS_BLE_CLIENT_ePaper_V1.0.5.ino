@@ -26,7 +26,7 @@
 #include <PubSubClient.h>
 #include <WiFi.h>
 #include <WiFiClient.h>
-#include "credentials.h"						// Credentials
+#include "credentials.h"						// Credentials comment out and use defines below for WiFi
 //#define STA_SSID "*********"
 //#define STA_PASS "*********"
 #define AP_SSID  "esp32"
@@ -183,14 +183,14 @@ void WiFiEvent(WiFiEvent_t event) {
       delay(500);
       //onButton();
       break;
-    /*
+    
       case SYSTEM_EVENT_STA_DISCONNECTED:
       Serial.println("STA Disconnected");
       break;
       case SYSTEM_EVENT_STA_STOP:
       Serial.println("STA Stopped");
       break;
-    */
+    
     default:
       break;
   }
@@ -426,7 +426,7 @@ void UPDATE_BLOCK_LEVELS()
     */
   }
 
-  delay(500); //REQUIRED OR FAILS TO GET VL53 MEASUREMENT
+  delay(500); 
   display.update();
 
 
@@ -462,20 +462,18 @@ static void notifyCallback(BLERemoteCharacteristic * pBLERemoteCharacteristic, u
   delay(10);
   currentMillis = millis();      //END LOOPTIME
   completeLoopTime = (currentMillis - startMillis) ;
-  //Serial.println("");
   Serial.print ("Callback LoopTime ");
   Serial.println(completeLoopTime);
   Serial.println("");
 
-  onButton();                     //TURN BT OFF READY FOR WIFI CONNECTION
+  onButton();									  //TURN BT OFF READY FOR WIFI CONNECTION
   Serial.println("onButton STEP_BTOFF");
   delay(100);
 
   onButton();
   Serial.println("onButton STEP_STA");
 
-  //Serial.println("Calling sendMQTT()");
-  //onButton();
+  
 }
 
 bool connectToServer(BLEAddress pAddress) {
@@ -623,11 +621,13 @@ void INIT_BLE()
 
 
 void setup()
-{ startMillis = millis();      //START LOOPTIME
+{ 
+  startMillis = millis();      //START LOOPTIME
   Serial.begin(115200);
   Serial.println(__FILE__);
   Serial.println(__DATE__);
   Serial.println(__TIME__);
+ 
   display.init();
   // WIFI EVENT HANDLER
   WiFi.onEvent(WiFiEvent);
@@ -638,7 +638,7 @@ void setup()
   //WiFi.mode(WIFI_OFF);
   onButton();                   //TURN BT ON
   Serial.println("onButton STEP_BTON");
-  //INIT_BLE();
+  
 
 }
 
@@ -652,20 +652,11 @@ void loop()
       Serial.println("");
       connected = true;
     } else {
-      if (DEBUG)Serial.println("We have failed to connect to the server; there is nothin more we will do.");
+      if (DEBUG)Serial.println("We have failed to connect to the server");
     }
     doConnect = false;
   }
 
-  /*
-     if (connected) {
-      //String newValue = "Time since boot: " + String(millis() / 1000);
-      //Serial.println("Setting new characteristic value to \"" + newValue + "\"");
-      // Set the characteristic's value to be the array of bytes that is actually a string.
-      //pRemoteCharacteristic->writeValue(newValue.c_str(), newValue.length());
-    } else if (doScan) {
-      BLEDevice::getScan()->start(0);  // this is just eample to start scan after disconnect, most likely there is better way to do it in arduino
-    }
-  */
-  delay(3000); //REQUIRED 3SECS
+ 
+  delay(3000); //REQUIRED 3 SECS
 }
