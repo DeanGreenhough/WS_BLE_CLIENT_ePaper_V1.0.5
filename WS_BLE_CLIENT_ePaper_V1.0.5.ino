@@ -13,6 +13,8 @@
 		  note: BTON does not appear to invoke BT, enum is in correct state
 		  the work around is to esp.restart() after sending WiFi to re initilaise BT
 		  In my case this works, but think a hardware issue. Requires more understanding
+	
+	Transferred to Github
 
 
 */
