@@ -69,7 +69,7 @@ GxEPD_Class display(io, /*RST=*/ 16, /*BUSY=*/ 4); // arbitrary selection of (16
 
 // WDT
 #include "esp_system.h"
-const int wdtTimeout = 30000;  //WDT SET IN mS
+const int wdtTimeout = 10000;  //WDT SET IN mS						//issues with Client not receiving data changed 30 - 10
 hw_timer_t *timer = NULL;
 
 //WDT FUNCTION
@@ -77,7 +77,7 @@ void IRAM_ATTR resetModule() {
   ets_printf("\n");
   ets_printf("***********************************\n");
   ets_printf("***********************************\n");
-  ets_printf("****** WDT ACTIVATED @ 30Sec ******\n");
+  ets_printf("****** WDT ACTIVATED @ 10 Sec ******\n");
   ets_printf("***********************************\n");
   ets_printf("***********************************\n");
   ets_printf("\n");
